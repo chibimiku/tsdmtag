@@ -1,0 +1,27 @@
+ <!--{subtemplate common/header}-->
+ 
+ <div class="f_c">
+	<h3 class="flb">
+		<em>$taginfo[name]</em>
+		<!--{if $tagjar}-->
+			<h3>Search: $findtag</h3>
+			<em>Hited tags:</em>
+		<!--{loop $tagjar $tag_row}-->
+			<em><a href="plugin.php?id=tsdmtag&key=tag&action=search&tagid=$tag_row[id]">$tag_row[name]</a></em>($tag_row[count])<span class="pipe">|</span>
+		<!--{/loop}-->
+		<!--{/if}-->
+	</h3>
+	<div class="c floatwrap">
+		<!--{loop $tids $thread}-->
+			<div class="box">
+				<div class="post_title"><a href="forum.php?mod=viewthread&tid=$thread[tid]">$thread[subject]</a></div>
+				<div class="post_summary">$sum[$thread[tid]]</div>
+			</div>
+		<!--{/loop}-->
+	</div>
+	
+	<div>$multipage</div>
+	
+</div>
+ 
+ <!--{subtemplate common/footer}-->

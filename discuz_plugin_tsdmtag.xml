@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2]]></item>
+	<item id="Time"><![CDATA[2015-06-09 00:00]]></item>
+	<item id="From"><![CDATA[ÌìÊ¹¶¯ÂþÂÛÌ³ (http://www.tsdm.net)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[2]]></item>
+			<item id="name"><![CDATA[ÌìÊ¹¶¯ÂþTAG²å¼þ]]></item>
+			<item id="identifier"><![CDATA[tsdmtag]]></item>
+			<item id="description"><![CDATA[ÌìÊ¹¶¯ÂþµÄTAG²å¼þ]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[tsdmtag/]]></item>
+			<item id="copyright"><![CDATA[³õÒô¼Ò¶þÐ¡½ã@TSDM]]></item>
+			<item id="version"><![CDATA[]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[tsdmtag]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2]]></item>
+	</item>
+</root>
