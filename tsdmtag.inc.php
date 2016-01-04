@@ -223,6 +223,9 @@ function take_summary($tids_array){
 			$tidsjar[] = $tmp;
 		}
 	}
+	if(count($tidsjar) <= 0){
+		return false;
+	}
 	$querystr = implode(',',$tidsjar);
 	$sum = DB::result_array('SELECT tid,message FROM '.DB::table('forum_post')." WHERE first=1 AND tid IN (".$querystr.")");
 	$result_array = array();
