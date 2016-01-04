@@ -54,12 +54,12 @@ if($_G['gp_key'] == 'tag'){
 			}else{
 				$tagid = $taginfo['id'];
 			}
-			$threadtaginfo = DB::fetch_first('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE thread_id=$itid AND tagid=$tagid");
+			$threadtaginfo = DB::fetch_first('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE thread_id=$itid AND tag_id=$tagid");
 			//insert thread tag data
 			if(!$threadtaginfo){
 				DB::insert('plugin_minerva_index', array(
 					'thread_tid' => $itid,
-					'tagid' => $tagid,
+					'tag_id' => $tagid,
 					'tagname' => $input,
 					'power' => $mypower,
 					'subject' => $threadinfo['subject']
@@ -93,7 +93,7 @@ if($_G['gp_key'] == 'tag'){
 			$needajax = true;
 			$postive = intval($_G['gp_postive']);
 			$tagid = intval($_G['gp_tagid']);
-			$threadtaginfo = DB::fetch_first('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tagid=$tagid");
+			$threadtaginfo = DB::fetch_first('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tag_id=$tagid");
 			if(!$threadtaginfo){
 				//showmessage('cannot find taginfo...');
 				$status = -1;
@@ -133,7 +133,7 @@ if($_G['gp_key'] == 'tag'){
 			if(!$taginfo){
 				showmessage('msg_cannot_find_tagid');
 			}
-			$tids = DB::result_array('SELECT tid,subject FROM '.DB::table('plugin_minerva_index')." WHERE tagid=$tagid");
+			$tids = DB::result_array('SELECT tid,subject FROM '.DB::table('plugin_minerva_index')." WHERE tag_id=$tagid");
 			if(!$tids || count($tids) == 0){
 				showmessage('msg_tag_empty');
 			}
@@ -159,7 +159,7 @@ if($_G['gp_key'] == 'tag'){
 				$tagidjar[] = $row['id'];
 			}
 			$wherestr = implode(',', $tagidjar);
-			$threadjar = DB::result_array('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tagid IN (".$wherestr.")");
+			$threadjar = DB::result_array('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tag_id IN (".$wherestr.")");
 			
 			//do uniq by tid
 			$tidjar = array();
