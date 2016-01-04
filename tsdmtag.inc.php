@@ -8,7 +8,7 @@ if(!$_G['uid']) {
 	showmessage('not_loggedin', NULL, array(), array('login' => 1));
 }
 
-$tpp = 1;
+$tpp = 10;
 $page = max(1, intval($_G['gp_page']));
 $start_limit = ($page - 1) * $tpp;
 

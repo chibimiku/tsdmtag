@@ -2,12 +2,12 @@
  
  <div class="f_c">
 	<h3 class="flb">
-		<em>$taginfo[name]</em>
+		<em>$taginfo[tag_name]</em>
 		<!--{if $tagjar}-->
 			<h3>Search: $findtag</h3>
 			<em>Hited tags:</em>
 		<!--{loop $tagjar $tag_row}-->
-			<em><a href="plugin.php?id=tsdmtag&key=tag&action=search&tagid=$tag_row[id]">$tag_row[name]</a></em>($tag_row[count])<span class="pipe">|</span>
+			<em><a href="plugin.php?id=tsdmtag&key=tag&action=search&tagid=$tag_row[id]">$tag_row[tag_name]</a></em>($tag_row[count])<span class="pipe">|</span>
 		<!--{/loop}-->
 		<!--{/if}-->
 	</h3>
