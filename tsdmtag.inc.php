@@ -60,7 +60,7 @@ if($_G['gp_key'] == 'tag'){
 				DB::insert('plugin_minerva_index', array(
 					'thread_tid' => $itid,
 					'tag_id' => $tagid,
-					'tagname' => $input,
+					'tag_name' => $input,
 					'power' => $mypower,
 					'subject' => $threadinfo['subject']
 				));
