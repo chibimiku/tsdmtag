@@ -174,7 +174,7 @@ if($_G['gp_key'] == 'tag'){
 		case 'searchtag_keyword':
 			$tagjar = array();
 			$tagidjar = array();
-			$findtag = DB::mysqli_escape($_G['gp_findtagname']);
+			$findtag = DB::mysqli_escape(trim(str_replace(' ',,$_G['gp_findtagname'])));
 			if(strlen($findtag) < 1){
 				showmessage('tsdmtag_err_input_keyword_too_short', 'plugin.php?id=tsdmtag');
 			}
@@ -183,6 +183,9 @@ if($_G['gp_key'] == 'tag'){
 			while($row = DB::fetch($rs)){
 				$tagjar[] = $row;
 				$tagidjar[] = $row['id'];
+			}
+			if(count($tagidjar) <= 0){
+				showmessage('keyword_cannot_find_tag.');
 			}
 			$wherestr = implode(',', $tagidjar);
 			$threadjar = DB::result_array('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tag_id IN (".$wherestr.") LIMIT 2000");
