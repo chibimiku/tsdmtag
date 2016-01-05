@@ -188,7 +188,7 @@ if($_G['gp_key'] == 'tag'){
 				showmessage('keyword_cannot_find_tag.');
 			}
 			$wherestr = implode(',', $tagidjar);
-			$threadjar = DB::result_array('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tag_id IN (".$wherestr.") LIMIT 2000");
+			$threadjar = DB::result_array('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tag_id IN (".$wherestr.") ORDER BY dateline DESC LIMIT 2000");
 			
 			//do uniq by tid
 			$tidjar = array();
