@@ -145,7 +145,7 @@ if($_G['gp_key'] == 'tag'){
 				$finaltids[] = $tidjar[$i + $pagebase]['thread_id'];
 			}
 			if(count($finaltids) <= 0){
-				showmessage('cannot_find_threads_in_tag_1_'.count($tidjar)."_$pagebase");
+				showmessage('cannot_find_threads_in_tag_1_rsNum:'.count($tidjar)."_$pagebase");
 			}
 			$wherestr = implode(',', $finaltids);
 			if(!$wherestr){
