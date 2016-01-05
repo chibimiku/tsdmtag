@@ -151,7 +151,14 @@ if($_G['gp_key'] == 'tag'){
 			if(!$wherestr){
 				showmessage('cannot_find_threads_in_tag_2');
 			}
-			$tids = DB::result_array('SELECT tid,subject FROM '.DB::table('forum_thread')." WHERE tid IN (".$wherestr.")");
+			$tids_query = DB::query('SELECT tid,subject FROM '.DB::table('forum_thread')." WHERE tid IN (".$wherestr.")");
+			$subjects_show = array();
+			$tids = array();
+			while($tmp = DB::fetch($tids_query)){
+				$tids_query[] = array('thread_id' => $tmp['tid']);
+				$subjects_show[$tmp['tid']] = $tids_query['subject'];
+			}
+			
 			
 			if(!$tids || count($tids) == 0){
 				showmessage('msg_tag_empty');
