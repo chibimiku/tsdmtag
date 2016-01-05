@@ -174,7 +174,7 @@ if($_G['gp_key'] == 'tag'){
 		case 'searchtag_keyword':
 			$tagjar = array();
 			$tagidjar = array();
-			$findtag = DB::mysqli_escape(trim(str_replace(' ',,$_G['gp_findtagname'])));
+			$findtag = DB::mysqli_escape(trim(str_replace(' ','',$_G['gp_findtagname'])));
 			if(strlen($findtag) < 1){
 				showmessage('tsdmtag_err_input_keyword_too_short', 'plugin.php?id=tsdmtag');
 			}
