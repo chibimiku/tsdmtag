@@ -172,7 +172,7 @@ if($_G['gp_key'] == 'tag'){
 				showmessage('tsdmtag_err_input_keyword_too_short', 'plugin.php?id=tsdmtag');
 			}
 			//var_dump($findtag);
-			$rs = DB::query('SELECT * FROM '.DB::table('plugin_minerva_tags')." WHERE tag_name LIKE '%".$findtag."%' LIMIT 30");
+			$rs = DB::query('SELECT * FROM '.DB::table('plugin_minerva_tags')." WHERE tag_name LIKE '%".$findtag."%' ORDER BY count DESC LIMIT 30");
 			while($row = DB::fetch($rs)){
 				$tagjar[] = $row;
 				$tagidjar[] = $row['id'];
@@ -193,7 +193,7 @@ if($_G['gp_key'] == 'tag'){
 			//calc total page.
 			$multipage = multi(count($tidjar), $tpp, $page, 'plugin.php?id=tsdmtag&key=tag&action=searchtag_keyword&findtagname='.urlencode($_G['gp_findtagname']));
 			
-			//take right things in finaljar:$tids
+			//take right things into finaljar: $tids.
 			$tids = array();
 			$tidjar_final = array();
 			$threadcount = 0;
@@ -211,7 +211,9 @@ if($_G['gp_key'] == 'tag'){
 			}
 			
 			//already got tids... take summary.
-			$sum = take_summary($tidjar_final);
+			$take_sum_rs = take_summary($tidjar_final);
+			$sum = &$take_sum_rs['sum'];
+			$subjects = &$take_sum_rs['subjects'];
 			
 			include template('tsdmtag:search');
 			break;
@@ -246,10 +248,11 @@ function take_summary($tids_array){
 		return false;
 	}
 	$querystr = implode(',',$tidsjar);
-	$sum = DB::result_array('SELECT tid,message FROM '.DB::table('forum_post')." WHERE first=1 AND tid IN (".$querystr.")");
-	$result_array = array();
+	$sum = DB::result_array('SELECT tid,message,subject FROM '.DB::table('forum_post')." WHERE first=1 AND tid IN (".$querystr.")");
+	$result_array = array('sum' => array(), 'subject' => array());
 	foreach($sum as $row){
-		$result_array[$row['tid']] = $row['message'];
+		$result_array['sum'][$row['tid']] = $row['message'];
+		$result_array['subject'][$row['tid']] = $row['subject'];
 	}
 	return $result_array;
 }
