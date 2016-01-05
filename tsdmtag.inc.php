@@ -184,8 +184,8 @@ if($_G['gp_key'] == 'tag'){
 			$tidjar = array();
 			$threadinfojar = array();
 			foreach($threadjar as $row){
-				if(!in_array($row['tid'], $tidjar)){
-					$tidjar[] = $row['tid'];
+				if(!in_array($row['thread_id'], $tidjar)){
+					$tidjar[] = $row['thread_id'];
 					$threadinfojar[] = $row;
 				}
 			}
@@ -204,7 +204,7 @@ if($_G['gp_key'] == 'tag'){
 				}
 				if($threadcount >= $start_limit){
 					$tids[] = $row;
-					$tidjar_final[] = $row['tid'];
+					$tidjar_final[] = $row['thread_id'];
 					++$in_jar_count;
 				}
 				++$threadcount;
