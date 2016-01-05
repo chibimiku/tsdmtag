@@ -213,7 +213,7 @@ if($_G['gp_key'] == 'tag'){
 			//already got tids... take summary.
 			$take_sum_rs = take_summary($tidjar_final);
 			$sum = &$take_sum_rs['sum'];
-			$subjects = &$take_sum_rs['subjects'];
+			$subjects_show = &$take_sum_rs['subjects'];
 			
 			include template('tsdmtag:search');
 			break;
@@ -252,7 +252,7 @@ function take_summary($tids_array){
 	$result_array = array('sum' => array(), 'subject' => array());
 	foreach($sum as $row){
 		$result_array['sum'][$row['tid']] = $row['message'];
-		$result_array['subject'][$row['tid']] = $row['subject'];
+		$result_array['subjects'][$row['tid']] = $row['subject'];
 	}
 	return $result_array;
 }
