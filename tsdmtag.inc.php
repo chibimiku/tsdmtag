@@ -155,8 +155,8 @@ if($_G['gp_key'] == 'tag'){
 			$subjects_show = array();
 			$tids = array();
 			while($tmp = DB::fetch($tids_query)){
-				$tids_query[] = array('thread_id' => $tmp['tid']);
-				$subjects_show[$tmp['tid']] = $tids_query['subject'];
+				$tids[] = array('thread_id' => $tmp['tid']);
+				$subjects_show[$tmp['tid']] = $tmp['subject'];
 			}
 			
 			
