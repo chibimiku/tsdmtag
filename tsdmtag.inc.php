@@ -138,7 +138,7 @@ if($_G['gp_key'] == 'tag'){
 			$pagebase = max(0,$tpp * $page);
 			$finaltids = array();
 			for($i=0;$i<$tpp;$i++){
-				$finaltids[] = $tidjar[$i + $pagebase];
+				$finaltids[] = $tidjar[$i + $pagebase]['thread_id'];
 			}
 			$wherestr = implode(',', $finaltids);
 			if(!$wherestr){
