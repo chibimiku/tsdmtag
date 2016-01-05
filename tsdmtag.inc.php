@@ -128,6 +128,7 @@ if($_G['gp_key'] == 'tag'){
 			if(!$tagid){
 				showmessage('msg_cannot_find_tagid');
 			}
+			$page = max(1,intval($_G['gp_page']));
 			$taginfo = DB::fetch_first('SELECT * FROM '.DB::table('plugin_minerva_tags')." WHERE id=$tagid");
 			if(!$taginfo){
 				showmessage('msg_cannot_find_tagid');
@@ -135,16 +136,22 @@ if($_G['gp_key'] == 'tag'){
 			$tidjar = DB::result_array('SELECT thread_id FROM '.DB::table('plugin_minerva_index')." WHERE tag_id=$tagid");
 			//TODO: to be fill title.
 			$multipage = multi(count($tidjar), $tpp, $page, 'plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid='.$tagid);
-			$pagebase = max(0,$tpp * $page);
+			$pagebase = max(0,$tpp * ($page-1));
 			$finaltids = array();
 			for($i=0;$i<$tpp;$i++){
+				if(!isset($tidjar[$i + $pagebase]['thread_id'])){
+					break;
+				}
 				$finaltids[] = $tidjar[$i + $pagebase]['thread_id'];
+			}
+			if(count($finaltids) <= 0){
+				showmessage('cannot_find_threads_in_tag_1_'.count($tidjar)."_$pagebase");
 			}
 			$wherestr = implode(',', $finaltids);
 			if(!$wherestr){
-				showmessage('cannot_find_threads_in_tag');
+				showmessage('cannot_find_threads_in_tag_2');
 			}
-			$tids = DB::query('SELECT tid,subject FROM '.DB::table('forum_thread')." WHERE tid IN (".$wherestr.")");
+			$tids = DB::result_array('SELECT tid,subject FROM '.DB::table('forum_thread')." WHERE tid IN (".$wherestr.")");
 			
 			if(!$tids || count($tids) == 0){
 				showmessage('msg_tag_empty');
