@@ -185,7 +185,7 @@ if($_G['gp_key'] == 'tag'){
 				$tagidjar[] = $row['id'];
 			}
 			$wherestr = implode(',', $tagidjar);
-			$threadjar = DB::result_array('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tag_id IN (".$wherestr.")");
+			$threadjar = DB::result_array('SELECT * FROM '.DB::table('plugin_minerva_index')." WHERE tag_id IN (".$wherestr.") LIMIT 2000");
 			
 			//do uniq by tid
 			$tidjar = array();
