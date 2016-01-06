@@ -5,7 +5,7 @@
  <p>$item_count item(s), $tag_count tag(s).</p>
  <p>top20 tags: </p>
  <!--{loop $top20tags $toptag}-->
- <a href="plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid=$toptag[id]">$toptag[tag_name]</a><span class="pipe"> |</span>
+ <a href="plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid=$toptag[id]"><span>$toptag[tag_name]</span><span> ($toptag[count])</span></a><span class="pipe"> |</span>
  <!--{/loop}-->
   <div class="box">
 	<h3>Panel</h3>
