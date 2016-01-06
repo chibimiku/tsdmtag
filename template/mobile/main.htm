@@ -3,7 +3,11 @@
  <h2>TSDM tag system</h2>
  <h3>Status</h3>
  <p>$item_count item(s), $tag_count tag(s).</p>
- <div class="box">
+ <p>top20 tags: </p>
+ <!--{loop $top20tags $toptag}-->
+ <a href="plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid=$toptag[id]">$toptag[tag_name]</a><span class="pipe"> |</span>
+ <!--{/loop}-->
+  <div class="box">
 	<h3>Panel</h3>
 	<div>
 	<h4>Find tag name</h4>

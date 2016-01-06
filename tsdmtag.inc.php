@@ -240,6 +240,10 @@ if($_G['gp_key'] == 'tag'){
 	$item_count = DB::result_first('SELECT count(*) FROM '.DB::table('plugin_minerva_index'));
 	$tag_count = DB::result_first('SELECT count(*) FROM '.DB::table('plugin_minerva_tags'));
 	
+	//get top20 tags
+	$top20tags = DB::result_array('SELECT * FROM '.DB::table($tblname_tagitem)." ORDER BY count DESC LIMIT 20");
+	
+	
 	include template('tsdmtag:main');
 }
 
