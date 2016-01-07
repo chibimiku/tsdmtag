@@ -1,0 +1,32 @@
+{template common/header}
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" id="fjump" class="nvhm">$_G[setting][bbname]</a><EM></EM><a href="plugin.php?id=tsdmtag">{lang tsdmtag_title}</a>
+	</div>
+</div>
+<div id="ct" class="ct2_a wp cl">
+	<div id="ct_shell">
+		 <div class="f_c">
+			<h3 class="flb">
+				<!--{if $taginfo}--><em>$taginfo[tag_name] ($taginfo[count])</em><!--{/if}-->
+				<!--{if $tagjar}-->
+					<h3>Search: $findtag</h3>
+					<em>Hited tags:</em>
+				<!--{loop $tagjar $tag_row}-->
+					<em><a href="plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid=$tag_row[id]">$tag_row[tag_name]</a></em>($tag_row[count])<span class="pipe">|</span>
+				<!--{/loop}-->
+				<!--{/if}-->
+			</h3>
+			<div class="c floatwrap">
+				<!--{loop $tids $thread}-->
+					<div class="box">
+						<div class="post_title"><a href="forum.php?mod=viewthread&tid=$thread[thread_id]">$subjects_show[$thread[thread_id]]</a></div>
+					</div>
+				<!--{/loop}-->
+			</div>
+			<div>$multipage</div>
+		</div>
+	
+	</div>
+</div>
+{template common/footer}
