@@ -151,7 +151,7 @@ if($_G['gp_key'] == 'tag'){
 			if(!$wherestr){
 				showmessage('cannot_find_threads_in_tag_2');
 			}
-			$tids_query = DB::query('SELECT tid,subject FROM '.DB::table('forum_thread')." WHERE tid IN (".$wherestr.")");
+			$tids_query = DB::query('SELECT tid,subject FROM '.DB::table('forum_thread')." WHERE tid IN (".$wherestr.") ORDER BY dateline DESC");
 			$subjects_show = array();
 			$tids = array();
 			while($tmp = DB::fetch($tids_query)){
