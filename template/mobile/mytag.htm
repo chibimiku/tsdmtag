@@ -5,7 +5,12 @@
 <div class="box">
 	<ul>
 	<!--{loop $mytags $mytag}-->
-		<li><a href="plugin.php?id=tsdmtag:tsdmtag&action=searchtag&tagid=$mytag[id]">$mytag[tag_name]</a><a href="plugin.php?id=tsdmtag:mytag&action=rmscribe&subid=$mytag[id]">[-]</a></li>
+		<li>
+			<a href="plugin.php?id=tsdmtag:tsdmtag&action=searchtag&tagid=$mytag[id]" <!--{if !$mytag[secret]}-->style="color:#FF0000"<!--{/if}-->>$mytag[tag_name]</a>
+			<a href="plugin.php?id=tsdmtag:mytag&action=seekmate&seektagid=$mytag[id]">[?]</a>
+			<a href="plugin.php?id=tsdmtag:mytag&action=rmscribe&subid=$mytag[id]">[-]</a>
+			<a href="plugin.php?id=tsdmtag:mytag&action=switchsecret&subid=$mytag[id]">[/]</a>
+		</li>
 	<!--{/loop}-->
 	</ul>
 </div>
