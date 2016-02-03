@@ -1,17 +1,24 @@
 <!--{subtemplate common/header}-->
  
 <h2>TSDM tag system</h2>
-<h3>My tags</h3>
+<div class="bm_h">{lang mytags}</div>
 <div class="box">
 	<ul>
 	<!--{loop $mytags $mytag}-->
-		<li><a href="plugin.php?id=tsdmtag:tsdmtag&action=searchtag&tagid=$mytag[id]">$mytag[tag_name]</a></li>
+		<li><a href="plugin.php?id=tsdmtag:tsdmtag&action=searchtag&tagid=$mytag[id]">$mytag[tag_name]</a><a href="plugin.php?id=tsdmtag:mytag&action=rmscribe&subid=$mytag[id]">[-]</a></li>
 	<!--{/loop}-->
 	</ul>
 </div>
 
+<!--{if $_G[gp_action]=='seekmate'}-->
 <div class="box">
-	
+	<div class="bm_h">{lang same_tag_title} </div>
+	<ul>
+		<!--{loop $member_jar $tagmem}-->
+			<li><a href="home.php?mod=space&uid=$tagmem[uid]">$tagmem[username]</a></li>
+		<!--{/loop}-->
+	</ul>
 </div>
+<!--{/if}-->
  
 <!--{subtemplate common/footer}-->

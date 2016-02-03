@@ -54,6 +54,24 @@ switch ($_G['gp_action']){
 		DB::delete('plugin_minerva_scribe',"subid=$subid");
 		showmessage('succ_del_tag_scribe_done',dreferer());
 		break;
+	case 'switchsecret':
+		//check 
+		$subid = intval($_G['gp_subid']);
+		$swinfo = DB::fetch_first('SELECT * FROM '.DB::table('plugin_minerva_scribe')." WHERE subid=$subid");
+		if(!$swinfo){
+			showmessage('err_sw_optid_not_found',dreferer());
+		}
+		if($swinfo['uid'] != $_G['uid']){
+			showmessage('err_cannot_opt_others_scribe',dreferer()); 
+		}
+		//check end
+		if($swinfo['secret'] == 0){
+			DB::update('plugin_minerva_scribe', array('secret' => 1),"subid=$subid");
+		}else{
+			DB::update('plugin_minerva_scribe', array('secret' => 0),"subid=$subid");
+		}
+		showmessage('succ_switch_stat_done', dreferer());
+		break;
 	case 'seekmate':
 		//check 
 		$seektagid = intval($_G['gp_seektagid']);
