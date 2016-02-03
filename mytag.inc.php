@@ -79,6 +79,6 @@ switch ($_G['gp_action']){
 		//show my tags list in template.
 }
 
-include template('tsdmtag:');
+include template('tsdmtag:mytag');
 
 ?>

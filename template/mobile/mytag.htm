@@ -1,6 +1,15 @@
 <!--{subtemplate common/header}-->
  
 <h2>TSDM tag system</h2>
+<h3>My tags</h3>
+<div class="box">
+	<ul>
+	<!--{loop $mytags $mytag}-->
+		<li><a href="plugin.php?id=tsdmtag:tsdmtag&action=searchtag&tagid=$mytag[id]">$mytag[tag_name]</a></li>
+	<!--{/loop}-->
+	</ul>
+</div>
+
 <div class="box">
 	
 </div>
