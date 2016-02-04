@@ -4,34 +4,46 @@
 		<a href="./" id="fjump" class="nvhm">$_G[setting][bbname]</a><EM></EM><a href="plugin.php?id=tsdmtag">{lang tsdmtag_title}</a>
 	</div>
 </div>
+<style>
+	.floatsys{float:left}
+	.tag_left{}
+	.tag_right{350px}
+	.tag_new{}
+</style>
 <div id="ct" class="ct2_a wp cl">
 	<div id="ct_shell">
-		 <h2>TSDM tag system</h2>
-		 <h3>Status</h3>
-		 <p>$item_count item(s), $tag_count tag(s).</p>
-		 <p>top20 tags: </p>
-		 <!--{loop $top20tags $toptag}-->
-		 <a href="plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid=$toptag[id]"><span>$toptag[tag_name]</span><span> ($toptag[count])</span></a><span class="pipe"> |</span>
-		 <!--{/loop}-->
-		  <div class="box">
-			<h3>Panel</h3>
+		<div>Explore in TSDM</div>
+		<div class="tag_left floatsys">
+			<!--{if $mytaginfos}-->
 			<div>
-			<h4>Find tag name</h4>
-				<form action="plugin.php?id=tsdmtag&key=tag&action=searchtag_keyword" method="post">
-					<label for="findtagname">tagname?</label>
-					<input type="text" name="findtagname"/>
-					<input type="submit" />
-				</form>
+				<p><span>我订阅的Tag</span><a href="plugin.php?id=tsdmtag:mytag">订阅管理</a></p>
+				<ul>
+				<!--{loop $mytaginfos $mytaginfo}-->
+					<li <!--{if $mytaginfo[new]}-->class="tag_new"<!--{/if}-->>
+						<a href="plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid=$mytaginfo[id]"><span>$mytaginfo[tag_name]</span>
+						<span> ($mytaginfo[count])</span></a>
+					</li>
+				<!--{/loop}-->
+				</ul>
 			</div>
+			<!--{/if}-->
 			<div>
-				<h4>Find tag id</h4>
-				<form action="plugin.php?id=tsdmtag&key=tag&action=searchtag" method="post">
-					<label for="findtagname">tagid?</label>
-					<input type="text" name="tagid"/>
-					<input type="submit" />
-				</form>
+				<p><span>热门Tag</span></p>
+				<ul>
+				<!--{loop $top20tags $toptag}-->
+					<li>
+					<a href="plugin.php?id=tsdmtag&key=tag&action=searchtag&tagid=$toptag[id]"><span>$toptag[tag_name]</span>
+					<span> ($toptag[count])</span></a>
+					</li>
+				<!--{/loop}-->
+				</ul>
 			</div>
 		 </div>
+		 {subtemplate tsdmtag:right_ctl}
+	<div>
+		<p>Debuginfo:</p>
+		<p>$item_count item(s), $tag_count tag(s).</p>
+	</div>
 	</div>
 </div>
 {template common/footer}

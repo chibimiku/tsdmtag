@@ -1,0 +1,26 @@
+{template common/header}
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" id="fjump" class="nvhm">$_G[setting][bbname]</a><EM></EM><a href="plugin.php?id=tsdmtag">{lang tsdmtag_title}</a>
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div id="ct_shell">
+		<div>Explore in TSDM</div>
+			<div class="tag_left floatsys">
+				<ul>
+				<!--{loop $mytags $mytag}-->
+					<li>
+						<a href="plugin.php?id=tsdmtag:tsdmtag&action=searchtag&tagid=$mytag[subid]" <!--{if !$mytag[secret]}-->style="color:#FF0000"<!--{/if}-->>$mytag[tag_name]</a>
+						<a href="plugin.php?id=tsdmtag:mytag&action=seekmate&seektagid=$mytag[subid]">[?]</a>
+						<a href="plugin.php?id=tsdmtag:mytag&action=rmscribe&subid=$mytag[subid]">[-]</a>
+						<a href="plugin.php?id=tsdmtag:mytag&action=switchsecret&subid=$mytag[subid]">[/]</a>
+					</li>
+				<!--{/loop}-->
+				</ul>
+			</div>
+		{subtemplate tsdmtag:right_ctl}
+	</div>
+</div>
+{template common/footer}

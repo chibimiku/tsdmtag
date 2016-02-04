@@ -1,0 +1,31 @@
+		<div class="tag_right floatsys">
+			<h3>控制面板</h3>
+			<div>
+				<h4>搜索Tag</h4>
+				<form action="plugin.php?id=tsdmtag&key=tag&action=searchtag_keyword" method="post">
+					<label for="findtagname">输入Tag名称</label>
+					<input type="text" name="findtagname"/>
+					<input type="submit" value="提交" />
+				</form>
+			</div>
+			<div>
+				<h4>以TagId(数字)搜索</h4>
+				<form action="plugin.php?id=tsdmtag&key=tag&action=searchtag" method="post">
+					<label for="findtagname">tagid?</label>
+					<input type="text" name="tagid"/>
+					<input type="submit" value="提交"/>
+				</form>
+			</div>
+			<div>
+				<h4><a href="plugin.php?id=tsdmtag:mytag">订阅管理</a></h4>
+			</div>
+			<div>
+				<h4>关于</h4>
+				<div>
+					<p>Tag For TSDM v0.2 beta.</p>
+					<span>初音家二小姐@天使动漫论坛(chibimiku@TSDM.net)</span>
+					<p><a href="https://github.com/chibimiku/tsdmtag" target="_blank">这是个开源的插件，访问Github可获取该插件.</a></p>
+					<p>如有问题可提交issue，不确保能解决</p>
+				</div>
+			</div>
+		 </div>
